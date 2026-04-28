@@ -1,0 +1,947 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Arial', sans-serif;
+    background-color: rgba(234, 236, 236, 0.849);
+}
+header{
+    width: 100%;  /*растягивается на всю ширину окна*/
+    margin: 0 auto; /*автоматические отступы слева/справа*/
+    background-color: white; /*белый фон шапки*/
+    height: 110px; /*высота шапки*/
+    padding:10px 20px; /*внутренние отступы*/
+    display:flex; /*вертикальное выравнивание элементов по центру*/
+    align-items:center; /*равномерное распределение пространства между элементами*/
+    justify-content: space-between;
+    flex-wrap: wrap;
+    color:#1f1f1f; /*цвет текста*/
+    border-bottom: 4px solid #4e1111; /*темно-бордовая полоса внизу шапки*/
+    position: relative;
+}
+.logo{
+    display:flex; /*для горизонтального расположения логотипа и текста*/
+    align-items:center; /*вертикальное выравнивание по центру*/
+    gap: 15px; /*расстояние между логотипом и названием*/
+    flex: 1 1 auto;
+}
+.logoimg{
+    height:100px; /*высота*/
+    margin-right:10px; /*отступ справа*/
+    transition: height 0.3s; /*изменение высоты при адаптивности*/
+}
+.logoh1{
+    margin:0; /*обнуление отступов*/
+    font-size:14px; /*размер шрифта*/
+    color: #420a0a; /*цвет шрифта*/
+    font-weight: bold; /*жирное начертание текста*/
+    text-decoration:none; /*убираем подчеркивание у ссылки*/
+}
+
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 22px;
+    cursor: pointer;
+    z-index: 100;
+    position: relative;
+}
+
+.burger-menu span {
+    width: 100%;
+    height: 3px;
+    background-color: #420a0a;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.burger-menu.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.burger-menu.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-menu.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+.nav-menu {
+    flex: 0 0 auto;
+}
+
+.navig{
+    list-style:none; 
+    display:flex; 
+    gap:20px; 
+    margin:0; 
+    padding:0;
+}
+.navigA{
+    color:#2c0707; 
+    text-decoration:none;
+    font-weight: 500;
+    padding: 5px 10px;
+    transition: all 0.3s;
+    border-radius: 4px;
+    font-size: 1rem;
+    white-space: nowrap;
+}
+.navigA:hover,.navigA.active{
+    background-color: #d8d8d8;
+    color: #4e1d1d;
+}
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.post {
+    padding: 50px 0;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.post h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+    color: #3b1212;
+    border-bottom: 2px solid #4e1111;
+    padding-bottom: 15px;
+}
+
+.postGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+    
+}
+
+.postCard {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.postCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.postimag {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 3px solid #4e1111;
+}
+
+.postCard h3 {
+    padding: 15px 15px 5px;
+    font-size: 1.3rem;
+    color: #2c0a0a;
+}
+
+.date {
+    padding: 0 15px 5px;
+    color: #6d1d1d;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+.price {
+    padding: 0 15px 5px;
+    color: #6d1d1d;
+    font-weight: bold;
+    font-size: 1.0rem;
+}
+
+.descr {
+    padding: 0 15px 20px;
+    color: #555;
+    flex-grow: 1;
+}
+
+.allpost {
+    text-align: center;
+}
+
+.button {
+    display: inline-block;
+    background-color: #f5f5f5;
+    color: rgb(63, 13, 13);
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    border: 2px solid #300404;
+}
+.button:hover {
+    background-color: #703b3b9d;
+}
+
+footer {
+    background-color: rgb(252, 252, 252);/*фон подвала*/
+    color: #420a0a; /*цвет текста*/
+    padding-top: 40px; /*внутренний отступ сверху*/
+    border-top: 4px solid #4e1111; /*темно-бордовая полоса сверху*/
+}
+
+.footercont {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));/*адаптивная сетка:*/
+    gap: 40px;/*расстояние между блоками*/
+    padding-bottom: 30px;/*внутренний отступ снизу*/
+}
+.navigfot h3 {
+    color: #2c0a0a;/*цвет текста*/
+    margin-bottom: 20px;/*отступ снизу от заголовка до списка ссылок*/
+    font-size: 1.3rem;/*размер шрифта*/
+}
+
+.navigfotli {
+    list-style: none;/*убираем маркеры списка*/
+    padding: 0;/*убираем внутренние отступы*/
+    margin: 0;/*убираем внешние отступы*/
+}
+
+.navigfotli li {
+    margin-bottom: 10px;/*отступ снизу между пунктами меню*/
+}
+
+.navigfotli a {
+    color: #2c0a0a91;/*цвет текста*/
+    text-decoration: none;/*убираем подчеркивание у ссылок*/
+    transition: color 0.3s;/*изменение цвета при наведении*/
+    font-size: 0.95rem;/*размер шрифта*/
+}
+
+.navigfotli a:hover {
+    color: #3f3f3f;
+    text-decoration: underline;
+}
+.contacts h3,
+.otsiv h3 {
+    color: #2c0a0a;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+}
+
+.contacts address p {
+    margin-bottom: 10px;
+    font-style: normal;
+}
+
+.contacts a {
+    color: #2c0a0a91;
+    text-decoration: none;
+    word-break: break-word;
+}
+
+.contacts a:hover {
+    color: #3f3f3f;
+}
+
+.otsiv-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    color: #2c0a0a;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    background-color: #f5e6d3;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: 2px solid #290000;
+}
+
+.submitbtn {
+    background-color: #f5f5f5;
+    color: rgb(63, 13, 13);
+    border: 2px solid #300404;
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    width: fit-content;
+    min-width: 150px;
+}
+
+.submitbtn:hover {
+    background-color: #703b3b9d;
+}
+
+.footerbot {
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid #4e1111;
+    font-size: 0.9rem;
+    color: #2c0a0a;
+}
+
+
+@media (max-width: 768px) {
+    header {
+        padding: 15px;
+        min-height: auto;
+    }
+
+    .logo {
+        width: calc(100% - 50px);
+    }
+
+    .logoimg {
+        height: 60px;
+    }
+
+    .logoh1 h1 {
+        font-size: 1rem;
+        white-space: normal;
+        line-height: 1.3;
+    }
+
+    .burger-menu {
+        display: flex;
+    }
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 400px;
+        height: 100vh;
+        background-color: white;
+        padding: 100px 30px 30px;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        transition: right 0.3s ease;
+        z-index: 90;
+        overflow-y: auto;
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+    .navig {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .navigA {
+        font-size: 1.2rem;
+        padding: 10px 15px;
+        display: block;
+        border-radius: 8px;
+    }
+
+    .navigA:hover,
+    .navigA.active {
+        background-color: #f0e6e6;
+    }
+    body.menu-open {
+        overflow: hidden;
+    }
+    .postGrid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .postCard h3 {
+        font-size: 1.2rem;
+    }
+
+    .footercont {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .navigfot {
+        text-align: center;
+    }
+    
+    .navigfotli {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+    
+    .navigfotli li {
+        margin-bottom: 0;
+    }
+
+    .contacts, .otsiv {
+        text-align: center;
+    }
+
+    .submitbtn {
+        margin: 0 auto;
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) { /*адаптивность для телефонов*/
+    .logo { /*уменьшение расстояния между логотипом и названием музея*/
+        gap: 8px;
+    }
+    .logoimg { /*уменьшение высоты логотипа*/
+        height: 45px;
+    }
+    .logoh1 h1 { /*уменьшение размера шрифта заголовка*/
+        font-size: 0.85rem;
+    }
+    .post h2 { /*уменьшение размера заголовка раздела*/
+        font-size: 1.8rem;
+    }
+    .postGrid { /*переключение сетки с нескольких колонок на одну*/
+        grid-template-columns: 1fr;
+    }
+    .navigfotli {
+        flex-direction: column;/*ссылки в подвале располагаются друг под другом*/
+        gap: 8px;/*расстояние между каждой ссылкой*/
+    }
+    .button {
+        padding: 10px 20px;/*уменьшение внутренних отступов*/
+        font-size: 0.9rem;/*уменьшение размера шрифта*/
+        width: 100%;/*кнопка растягивается на всю доступную ширину*/
+        max-width: 280px;/*не шире 280px*/
+    }
+}
+
+
+@media (max-width: 360px) {
+    .logoimg {
+        height: 40px;
+    }
+
+    .logoh1 h1 {
+        font-size: 0.75rem;
+    }
+
+    .burger-menu {
+        width: 25px;
+        height: 18px;
+    }
+}
+
+.ogrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.ocard {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+    height: fit-content;
+}
+
+.ocard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.ocard h3 {
+    background-color: #4e1111;
+    color: white;
+    padding: 15px 20px;
+    margin: 0;
+    font-size: 1.4rem;
+    border-bottom: 2px solid #300404;
+}
+
+.ocontent {
+    padding: 20px;
+}
+
+.oimg {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 3px solid #f5e6d3;
+}
+
+.otext p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+    color: #333;
+    font-size: 1rem;
+}
+
+.otext strong {
+    color: #4e1111;
+    font-weight: 700;
+}
+
+.timecard .ocontent {
+    padding: 20px;
+}
+
+.time {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.timeitem {
+    display: flex;
+    align-items: baseline;
+    gap: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #d4b8a8;
+}
+
+.timeitem:last-child {
+    border-bottom: none;
+}
+
+.timeyear {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #4e1111;
+    background-color: #f5e6d3;
+    padding: 5px 15px;
+    border-radius: 30px;
+    min-width: 100px;
+    text-align: center;
+}
+
+.timeitem p {
+    margin: 0;
+    color: #333;
+    line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+    .ogrid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .ocard h3 {
+        font-size: 1.3rem;
+        padding: 12px 15px;
+    }
+    
+    .ocontent {
+        padding: 15px;
+    }
+    
+    .oimg {
+        height: 180px;
+    }
+    
+    .timeitem {
+        flex-direction: column;
+        gap: 5px;
+        align-items: flex-start;
+    }
+    
+    .timeyear {
+        min-width: auto;
+        width: fit-content;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .ocard h3 {
+        font-size: 1.2rem;
+    }
+    
+    .otext p {
+        font-size: 0.95rem;
+    }
+    
+    .timeyear {
+        font-size: 1rem;
+        padding: 4px 12px;
+    }
+}
+
+
+.info {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 30px;
+}
+
+.info h3 {
+    color: #4e1111;
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+
+    padding-left: 15px;
+}
+
+.info h4 {
+    color: #4e1111;
+    font-size: 1.3rem;
+    margin: 20px 0 10px;
+}
+
+.museumcard {
+    background: #f9f9f9;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+.museumcard h4 {
+    margin-top: 0;
+    color: #4e1111;
+    font-size: 1.4rem;
+}
+
+.schedule {
+    list-style: none;
+    padding: 0;
+}
+
+.schedule li {
+    padding: 8px 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.schedule li strong {
+    width: 140px;
+    color: #4e1111;
+}
+
+.free {
+    background: #fff3e0;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.free ul {
+    margin: 10px 0 0 20px;
+}
+
+.free li {
+    margin: 8px 0;
+}
+
+
+
+@media (max-width: 768px) {
+    .schedule li strong {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    
+    .info h3 {
+        font-size: 1.4rem;
+    }
+    
+    .info h4 {
+        font-size: 1.2rem;
+    }
+    
+    .museumcard h4 {
+        font-size: 1.2rem;
+    }
+    
+}
+
+
+.booking {
+    margin-top: 20px;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 5px;
+}
+
+.booking .form-group {
+    margin-bottom: 20px;
+}
+
+.booking label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #2c0a0a;
+}
+
+.booking input,
+.booking select,
+.booking textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e0c8c0;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: all 0.3s;
+    background-color: white;
+}
+
+.booking input:focus,
+.booking select:focus,
+.booking textarea:focus {
+    outline: none;
+    border-color: #4e1111;
+    box-shadow: 0 0 0 3px rgba(78, 17, 17, 0.1);
+}
+
+.booking select {
+    cursor: pointer;
+    appearance: none;
+
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 20px;
+}
+
+@media (max-width: 768px) {
+    .row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    
+    .booking input,
+    .booking select,
+    .booking textarea {
+        font-size: 16px;
+    }
+}
+
+
+.contcards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.contactcard {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    transition: transform 0.2s;
+}
+
+.contactcard:hover {
+    transform: translateY(-3px);
+}
+
+.contactcard h3 {
+    color: #4e1111;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+    padding-left: 12px;
+}
+
+.contactcard p {
+    margin: 10px 0;
+    line-height: 1.4;
+}
+
+.schedlist {
+    list-style: none;
+    padding-left: 0;
+    margin: 8px 0;
+}
+
+.schedlist li {
+    padding: 4px 0;
+    font-size: 0.95rem;
+}
+
+.admin {
+    background: white;
+    border-radius: 12px;
+    padding: 20px 25px;
+    margin-bottom: 50px;
+}
+
+.admin h3 {
+    font-size: 1.8rem;
+    color: #4e1111;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #4e1111;
+    padding-bottom: 10px;
+}
+
+.admin-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.admin-card {
+    background: #fefaf7;
+    padding: 15px;
+    border-radius: 10px;
+    transition: all 0.2s;
+}
+
+.admin-card h4 {
+    color: #4e1111;
+    font-size: 1rem;
+    margin: 0 0 8px;
+    letter-spacing: 0.5px;
+}
+
+.admin-card .name {
+    font-weight: 600;
+    color: #2c0a0a;
+    margin: 5px 0;
+}
+
+.admin-card .phone a {
+    color: #6d1d1d;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.admin-card .phone a:hover {
+    text-decoration: underline;
+}
+
+
+
+.legal h3, .map h3 {
+    color: #4e1111;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.legal p {
+    margin: 8px 0;
+    line-height: 1.4;
+}
+
+.map iframe {
+    border-radius: 10px;
+    width: 100%;
+    border: 2px solid #e0c8c0;
+}
+
+.map-note {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #6d1d1d;
+}
+
+@media (max-width: 768px) {
+    .legal-map {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    .admin-grid {
+        grid-template-columns: 1fr;
+    }
+    .contactcard h3 {
+        font-size: 1.2rem;
+    }
+}
+
+
+.back {
+    margin-bottom: 25px;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: transparent;
+    color: #4e1111;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 8px 16px;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    border: 2px solid #4e1111;
+}
+
+.back-button:hover {
+    background-color: #4e1111;
+    color: white;
+    transform: translateX(-3px);
+}
+
+
+
+
+.theme-switch {
+    background: none;
+    border: 2px solid #4e1111;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 5px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-left: auto;
+    margin-right: 15px;
+}
+
+.theme-switch:hover {
+    background-color: #4e1111;
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .theme-switch {
+        width: 28px;
+        height: 28px;
+        font-size: 1rem;
+        margin-right: 10px;
+        padding: 4px;
+    }
+}
