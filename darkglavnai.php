@@ -18,7 +18,7 @@ foreach ($events as $event) {
 <body>
     <header>
         <div class="logo">
-            <a href="darkglavnai.php"><img class="logoimg" src="img/logotip.png" alt="Музей"></a>
+            <a href="darkglavnai.php"><img class="logoimg" src="img/logo.png" alt="Музей"></a>
             <a class="logoh1" href="darkglavnai.php"><h1 >Исторический Музей Ярославля</h1></a>
         </div>
 
